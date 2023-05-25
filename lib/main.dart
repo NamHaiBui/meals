@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:meals/screens/categories/categories.dart';
+
+import 'package:meals/screens/tabs.dart';
 
 final theme = ThemeData(
   useMaterial3: true,
@@ -13,7 +14,11 @@ final theme = ThemeData(
 );
 
 void main() {
-  runApp(const App());
+  // To use riverpod state management functionanlity,
+  // we need to wrap the parts those are using riverpod with ProviderScope()
+  runApp(const ProviderScope(
+    child: App(),
+  ));
 }
 
 class App extends StatelessWidget {
@@ -22,7 +27,8 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: theme, home: const CategoriesScreen(), // Todo ...,
+      theme: theme,
+      home: const TabsScreen(),
     );
   }
 }
